@@ -1,4 +1,7 @@
 import "isomorphic-unfetch";
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import fetch from "fetch-with-proxy";
 import * as QueryString from "query-string";
 import {
