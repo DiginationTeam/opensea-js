@@ -1,4 +1,5 @@
 import "isomorphic-unfetch";
+import fetch from "fetch-with-proxy";
 import * as QueryString from "query-string";
 import {
   API_BASE_MAINNET,
@@ -379,10 +380,13 @@ export class OpenSeaAPI {
         100
       )}...`
     );
-
-    return fetch(finalUrl, finalOpts).then(async (res) =>
-      this._handleApiResponse(res)
-    );
+    try {
+      return fetch(finalUrl, finalOpts).then(async (res: any) =>
+        this._handleApiResponse(res)
+      );
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   private async _handleApiResponse(response: Response) {
